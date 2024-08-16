@@ -113,7 +113,7 @@ export const getPokemonDetails = async (id: string): Promise<Pokemon> => {
   );
 
   return {
-    id: data.id,
+    id: `${data.id}`,
     name: data.name,
     height: data.height,
     weight: data.weight,
