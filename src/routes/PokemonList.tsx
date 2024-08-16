@@ -1,10 +1,9 @@
 import { Grid, TextField } from '@mui/material';
-import { Link } from 'react-router-dom';
 
 import Error from '../components/Error';
 import GridSkeleton from '../components/GridSkeleton';
 import NotFound from '../components/NotFound';
-import PokemonItem from '../components/PokemonItem';
+import PokemonItemList from '../components/PokemonItemList';
 import Wrapper from '../components/Wrapper';
 import { useDebounce } from '../hooks/useDebounce';
 import usePokemon from '../hooks/usePokemon';
@@ -32,19 +31,7 @@ const PokemonList = () => {
       return <NotFound />;
     }
 
-    return data?.results.map((pokemon) => (
-      <Grid
-        to={pokemon.url}
-        key={pokemon.name}
-        item
-        xs={12}
-        md={4}
-        lg={3}
-        component={Link}
-      >
-        <PokemonItem name={pokemon.name} image={pokemon.image} />
-      </Grid>
-    ));
+    return <PokemonItemList items={data?.results || []} />;
   };
 
   return (

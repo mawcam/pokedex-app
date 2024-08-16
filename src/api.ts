@@ -19,6 +19,7 @@ export const getPokemon = async (name: string) => {
     previous: null,
     results: [
       {
+        id: `${data.id}`,
         name: data.name,
         url: `/pokemon/${data.id}`,
         image: data.sprites.front_default,
@@ -40,6 +41,7 @@ export const getPokemonList = async (
     const id = url.pathname.split('/').filter(Boolean).pop();
     return {
       ...pokemon,
+      id: `${id!}`,
       url: `/pokemon/${id}`,
       image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
     };
