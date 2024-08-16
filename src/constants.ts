@@ -4,3 +4,5 @@ export const ACTION_TYPE = {
   catch: 'catch',
   release: 'release',
 } as const;
+
+export const RECORD_LIMIT = 16;
