@@ -17,7 +17,7 @@ const ErrorPage = () => {
         Sorry, an unexpected error has occurred.
       </Typography>
       <Typography variant="body2">
-        <i>{error.statusText || error.message}</i>
+        <i>{error?.statusText || error?.message}</i>
       </Typography>
     </div>
   );

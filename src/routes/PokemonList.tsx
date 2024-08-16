@@ -1,4 +1,5 @@
 import { Grid, TextField } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 import Error from '../components/Error';
 import GridSkeleton from '../components/GridSkeleton';
@@ -10,6 +11,7 @@ import usePokemon from '../hooks/usePokemon';
 
 const PokemonList = () => {
   const debounce = useDebounce();
+
   const { data, error, isLoading, findPokemon } = usePokemon();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +33,15 @@ const PokemonList = () => {
     }
 
     return data?.results.map((pokemon) => (
-      <Grid key={pokemon.name} item xs={12} md={4} lg={3}>
+      <Grid
+        to={pokemon.url}
+        key={pokemon.name}
+        item
+        xs={12}
+        md={4}
+        lg={3}
+        component={Link}
+      >
         <PokemonItem name={pokemon.name} image={pokemon.image} />
       </Grid>
     ));
