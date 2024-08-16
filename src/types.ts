@@ -1,6 +1,13 @@
+import { ACTION_TYPE } from './constants';
+
 type NamedResult = {
   name: string;
   url: string;
+};
+
+export type NamedResultWithImage = NamedResult & {
+  image: string;
+  id: string;
 };
 
 export type PaginatedResult = {
@@ -11,7 +18,7 @@ export type PaginatedResult = {
 };
 
 export type PaginatedResultWithImage = Omit<PaginatedResult, 'results'> & {
-  results: Array<NamedResult & { image: string }>;
+  results: Array<NamedResultWithImage>;
 };
 
 export type PokemonResponseType = {
@@ -56,3 +63,7 @@ export type Pokemon = {
   stats: Array<PokemonStat>;
   images: Array<string>;
 };
+
+type ActionKeys = keyof typeof ACTION_TYPE;
+
+export type PokemonActionType = (typeof ACTION_TYPE)[ActionKeys];
