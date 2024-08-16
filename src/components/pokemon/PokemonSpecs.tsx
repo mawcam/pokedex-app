@@ -1,6 +1,6 @@
 import { Chip, Typography } from '@mui/material';
 
-import { Pokemon } from '../types';
+import { Pokemon } from '../../types';
 import PokemonAttributes from './PokemonAttributes';
 import PokemonImageList from './PokemonImageList';
 import PokemonStats from './PokemonStats';

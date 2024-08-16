@@ -1,7 +1,7 @@
 import { Grid, Typography } from '@mui/material';
 
-import PokemonItemList from '../components/PokemonItemList';
-import Wrapper from '../components/Wrapper';
+import PokemonItemList from '../components/pokemon/PokemonItemList';
+import Wrapper from '../components/ui/Wrapper';
 import usePokedex from '../hooks/usePokedex';
 
 const PokedexPage = () => {

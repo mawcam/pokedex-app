@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 
-import { PokemonType } from '../types';
+import { PokemonType } from '../../types';
 
 type Props = {
   types: Array<PokemonType>;

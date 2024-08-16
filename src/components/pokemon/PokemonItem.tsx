@@ -10,8 +10,8 @@ import {
   Typography,
 } from '@mui/material';
 
-import { ACTION_TYPE } from '../constants';
-import { PokemonActionType } from '../types';
+import { ACTION_TYPE } from '../../constants';
+import { PokemonActionType } from '../../types';
 
 type Props = {
   name: string;
