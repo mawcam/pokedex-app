@@ -6,7 +6,7 @@ import usePokedex from '../hooks/usePokedex';
 import usePokemonDetails from '../hooks/usePokemonDetails';
 import ErrorPage from './ErrorPage';
 
-const PokemonDetails = () => {
+const DetailsPage = () => {
   const { pokemonId } = useParams();
   const { data, error, isLoading } = usePokemonDetails(pokemonId!);
   const { isCaught } = usePokedex();
@@ -25,4 +25,4 @@ const PokemonDetails = () => {
   );
 };
 
-export default PokemonDetails;
+export default DetailsPage;
