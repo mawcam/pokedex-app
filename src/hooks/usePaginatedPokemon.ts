@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { getPokemon, getPokemonList } from '../api';
+import { RECORD_LIMIT } from '../constants';
 import { PaginatedResultWithImage } from '../types';
 
 export default function usePaginatedPokemon(
-  limit: string = '16',
+  limit: string = RECORD_LIMIT.toString(),
   offset: string = '0'
 ) {
   const [isLoading, setIsLoading] = useState(false);
