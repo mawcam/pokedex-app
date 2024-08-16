@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { useRouteError } from 'react-router-dom';
 
 type Error = {
@@ -10,12 +11,14 @@ const ErrorPage = () => {
   console.error(error);
 
   return (
-    <div id="error-page">
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
-      <p>
+    <div className="h-dvh flex flex-col justify-center items-center">
+      <Typography variant="h1">Oops!</Typography>
+      <Typography variant="body1">
+        Sorry, an unexpected error has occurred.
+      </Typography>
+      <Typography variant="body2">
         <i>{error.statusText || error.message}</i>
-      </p>
+      </Typography>
     </div>
   );
 };
