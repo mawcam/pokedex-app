@@ -1,5 +1,3 @@
-import './App.css';
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import ErrorPage from './routes/ErrorPage';
