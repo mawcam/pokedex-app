@@ -6,12 +6,12 @@ import GridSkeleton from '../components/ui/GridSkeleton';
 import NotFound from '../components/ui/NotFound';
 import Wrapper from '../components/ui/Wrapper';
 import { useDebounce } from '../hooks/useDebounce';
-import usePokemon from '../hooks/usePokemon';
+import usePokemon from '../hooks/usePaginatedPokemon';
 
 const ListingPage = () => {
   const debounce = useDebounce();
 
-  const { data, error, isLoading, findPokemon } = usePokemon();
+  const { data, error, isLoading, findPokemon, nextPage } = usePokemon();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -31,7 +31,14 @@ const ListingPage = () => {
       return <NotFound />;
     }
 
-    return <PokemonItemList items={data?.results || []} />;
+    return (
+      <PokemonItemList
+        items={data?.results || []}
+        next={data?.next}
+        previous={data?.previous}
+        nextPage={nextPage}
+      />
+    );
   };
 
   return (
@@ -45,7 +52,7 @@ const ListingPage = () => {
           onChange={handleChange}
         />
       </section>
-      <Grid container spacing={2}>
+      <Grid className="relative" container spacing={2}>
         {renderContent()}
       </Grid>
     </Wrapper>
