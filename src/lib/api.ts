@@ -1,4 +1,4 @@
-import { API_BASE_URL } from './constants';
+import { API_BASE_URL } from '../constants';
 import {
   PaginatedResult,
   PaginatedResultWithImage,
@@ -8,12 +8,23 @@ import {
   PokemonSprite,
   PokemonStat,
   PokemonType,
-} from './types';
+} from '../types';
+import caching from './caching';
 
 export const getPokemon = async (name: string) => {
-  const response = await fetch(`${API_BASE_URL}/v2/pokemon/${name}`);
+  const url = `${API_BASE_URL}/v2/pokemon/${name}`;
+
+  const cachedResponse = caching.get(url) as
+    | PaginatedResultWithImage
+    | undefined;
+
+  if (cachedResponse) {
+    return cachedResponse;
+  }
+
+  const response = await fetch(url);
   const data = await response.json();
-  return {
+  const result = {
     count: 1,
     next: null,
     previous: null,
@@ -26,6 +37,9 @@ export const getPokemon = async (name: string) => {
       },
     ],
   } as PaginatedResultWithImage;
+  caching.set(url, result);
+
+  return result;
 };
 
 export const getPokemonList = async (
@@ -33,7 +47,17 @@ export const getPokemonList = async (
   offset: string
 ): Promise<PaginatedResultWithImage> => {
   const params = new URLSearchParams({ limit, offset }).toString();
-  const response = await fetch(`${API_BASE_URL}/v2/pokemon?${params}`);
+  const url = `${API_BASE_URL}/v2/pokemon?${params}`;
+
+  const cachedResponse = caching.get(url) as
+    | PaginatedResultWithImage
+    | undefined;
+
+  if (cachedResponse) {
+    return cachedResponse;
+  }
+
+  const response = await fetch(url);
   const data: PaginatedResult = await response.json();
 
   const results = data.results.map((pokemon) => {
@@ -47,10 +71,13 @@ export const getPokemonList = async (
     };
   });
 
-  return {
+  const result = {
     ...data,
     results,
   };
+  caching.set(url, result);
+
+  return result;
 };
 
 const getAllSpriteImages = (
@@ -84,7 +111,14 @@ const getTypeImage = (sprites: PokemonSprite) => {
 };
 
 export const getPokemonDetails = async (id: string): Promise<Pokemon> => {
-  const response = await fetch(`${API_BASE_URL}/v2/pokemon/${id}`);
+  const url = `${API_BASE_URL}/v2/pokemon/${id}`;
+
+  const cachedResponse = caching.get(url) as Pokemon | undefined;
+  if (cachedResponse) {
+    return cachedResponse;
+  }
+
+  const response = await fetch(url);
   const data = await response.json();
   const images = getAllSpriteImages(data.sprites);
 
@@ -112,7 +146,7 @@ export const getPokemonDetails = async (id: string): Promise<Pokemon> => {
       } as PokemonStat)
   );
 
-  return {
+  const result = {
     id: `${data.id}`,
     name: data.name,
     height: data.height,
@@ -121,4 +155,7 @@ export const getPokemonDetails = async (id: string): Promise<Pokemon> => {
     types,
     images,
   };
+  caching.set(url, result);
+
+  return result;
 };

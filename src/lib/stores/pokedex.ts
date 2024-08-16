@@ -1,14 +1,13 @@
 import { create } from 'zustand';
 
-import { NamedResultWithImage } from '../types';
+import { POKEDEX_KEY } from '../../constants';
+import { NamedResultWithImage } from '../../types';
 
 interface PokedexState {
   list: Array<NamedResultWithImage>;
   addPokemon: (pokemon: NamedResultWithImage) => void;
   removePokemon: (id: string) => void;
 }
-
-export const POKEDEX_KEY = 'my-pokedex';
 
 export const usePokedexStore = create<PokedexState>()((set) => {
   const value = localStorage.getItem(POKEDEX_KEY);
