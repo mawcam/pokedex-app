@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { getPokemonDetails } from '../api';
+import { getPokemonDetails } from '../lib/api';
 import { Pokemon } from '../types';
 
 export default function usePokemonDetails(id: string) {

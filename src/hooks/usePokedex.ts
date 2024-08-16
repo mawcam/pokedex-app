@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
-import { POKEDEX_KEY, usePokedexStore } from '../stores/pokedex';
+import { POKEDEX_KEY } from '../constants';
+import { usePokedexStore } from '../lib/stores/pokedex';
 
 export default function usePokedex() {
   const { list, addPokemon, removePokemon } = usePokedexStore();

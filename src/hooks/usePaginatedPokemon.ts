@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { getPokemon, getPokemonList } from '../api';
 import { RECORD_LIMIT } from '../constants';
+import { getPokemon, getPokemonList } from '../lib/api';
 import { PaginatedResultWithImage } from '../types';
 
 export default function usePaginatedPokemon(

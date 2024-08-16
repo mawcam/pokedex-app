@@ -6,3 +6,5 @@ export const ACTION_TYPE = {
 } as const;
 
 export const RECORD_LIMIT = 16;
+
+export const POKEDEX_KEY = 'my-pokedex';
