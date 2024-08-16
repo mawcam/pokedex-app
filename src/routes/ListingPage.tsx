@@ -8,7 +8,7 @@ import Wrapper from '../components/Wrapper';
 import { useDebounce } from '../hooks/useDebounce';
 import usePokemon from '../hooks/usePokemon';
 
-const PokemonList = () => {
+const ListingPage = () => {
   const debounce = useDebounce();
 
   const { data, error, isLoading, findPokemon } = usePokemon();
@@ -52,4 +52,4 @@ const PokemonList = () => {
   );
 };
 
-export default PokemonList;
+export default ListingPage;

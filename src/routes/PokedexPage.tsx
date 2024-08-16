@@ -4,7 +4,7 @@ import PokemonItemList from '../components/PokemonItemList';
 import Wrapper from '../components/Wrapper';
 import usePokedex from '../hooks/usePokedex';
 
-const MyPokedex = () => {
+const PokedexPage = () => {
   const { list } = usePokedex();
 
   return (
@@ -22,4 +22,4 @@ const MyPokedex = () => {
   );
 };
 
-export default MyPokedex;
+export default PokedexPage;

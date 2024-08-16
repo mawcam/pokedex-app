@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Layout from './components/Layout';
+import DetailsPage from './routes/DetailsPage';
 import ErrorPage from './routes/ErrorPage';
-import MyPokedex from './routes/MyPokedex';
-import PokemonDetails from './routes/PokemonDetails';
-import PokemonList from './routes/PokemonList';
+import ListingPage from './routes/ListingPage';
+import PokedexPage from './routes/PokedexPage';
 
 const router = createBrowserRouter([
   {
@@ -14,16 +14,16 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        Component: PokemonList,
+        Component: ListingPage,
       },
       {
         path: 'pokemon/:pokemonId',
-        Component: PokemonDetails,
+        Component: DetailsPage,
         ErrorBoundary: ErrorPage,
       },
       {
         path: 'pokedex',
-        Component: MyPokedex,
+        Component: PokedexPage,
         ErrorBoundary: ErrorPage,
       },
     ],
