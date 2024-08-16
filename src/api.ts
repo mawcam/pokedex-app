@@ -29,8 +29,8 @@ export const getPokemon = async (name: string) => {
 };
 
 export const getPokemonList = async (
-  limit: string = '24',
-  offset: string = '0'
+  limit: string,
+  offset: string
 ): Promise<PaginatedResultWithImage> => {
   const params = new URLSearchParams({ limit, offset }).toString();
   const response = await fetch(`${API_BASE_URL}/v2/pokemon?${params}`);
