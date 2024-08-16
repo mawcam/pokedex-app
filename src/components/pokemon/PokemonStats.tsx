@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 
-import { PokemonStat as PokemonStatType } from '../types';
+import { PokemonStat as PokemonStatType } from '../../types';
 import PokemonStat from './PokemonStat';
 
 type Props = {

@@ -13,7 +13,7 @@ import Menu from '@mui/material/Menu';
 import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
-import Logo from './Logo';
+import Logo from '../Logo';
 
 const pages = [
   { title: 'Home', url: '/' },

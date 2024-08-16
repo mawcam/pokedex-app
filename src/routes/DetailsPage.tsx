@@ -1,7 +1,7 @@
 import { Container } from '@mui/material';
 import { useParams } from 'react-router-dom';
 
-import PokemonSpecs from '../components/PokemonSpecs';
+import PokemonSpecs from '../components/pokemon/PokemonSpecs';
 import usePokedex from '../hooks/usePokedex';
 import usePokemonDetails from '../hooks/usePokemonDetails';
 import ErrorPage from './ErrorPage';

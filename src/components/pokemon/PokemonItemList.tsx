@@ -1,9 +1,9 @@
 import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-import { ACTION_TYPE } from '../constants';
-import usePokedex from '../hooks/usePokedex';
-import { NamedResultWithImage } from '../types';
+import { ACTION_TYPE } from '../../constants';
+import usePokedex from '../../hooks/usePokedex';
+import { NamedResultWithImage } from '../../types';
 import PokemonItem from './PokemonItem';
 
 type Variant = 'listing' | 'pokedex';

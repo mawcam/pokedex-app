@@ -1,10 +1,10 @@
 import { Grid, TextField } from '@mui/material';
 
-import Error from '../components/Error';
-import GridSkeleton from '../components/GridSkeleton';
-import NotFound from '../components/NotFound';
-import PokemonItemList from '../components/PokemonItemList';
-import Wrapper from '../components/Wrapper';
+import PokemonItemList from '../components/pokemon/PokemonItemList';
+import Error from '../components/ui/Error';
+import GridSkeleton from '../components/ui/GridSkeleton';
+import NotFound from '../components/ui/NotFound';
+import Wrapper from '../components/ui/Wrapper';
 import { useDebounce } from '../hooks/useDebounce';
 import usePokemon from '../hooks/usePokemon';
 
