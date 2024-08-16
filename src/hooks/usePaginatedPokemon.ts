@@ -44,9 +44,22 @@ export default function usePaginatedPokemon(
   const nextPage = useCallback(
     async (limit: string, offset: string) => {
       setIsLoading(true);
-      performFetch(getPokemonList, limit, offset);
+      performFetch(
+        async (limit: string, offset: string) => {
+          const response = await getPokemonList(limit, offset);
+          if (data?.next) {
+            // We don't care about the response here, we just want to prefetch the data
+            // also I don't use await here because we don't need to wait for the response
+            // it will be cached once it's done
+            getPokemonList(limit, `${Number(offset) + Number(limit)}`);
+          }
+          return response;
+        },
+        limit,
+        offset
+      );
     },
-    [performFetch]
+    [performFetch, data?.next]
   );
 
   useEffect(() => {
